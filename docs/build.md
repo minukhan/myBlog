@@ -1,24 +1,28 @@
 ---
-title: "Building your Quartz"
+title: "Building your Blog"
 ---
 
-Once you've [[index#🪴 Get Started|initialized]] Quartz, let's see what it looks like locally:
+Once you've set up your blog, let's see what it looks like locally:
 
 ```bash
-npx quartz build --serve
+npm run dev
 ```
 
-This will start a local web server to run your Quartz on your computer. Open a web browser and visit `http://localhost:8080/` to view it.
+This will start a local web server to run your blog on your computer. Open a web browser and visit `http://localhost:8080/` to view it.
 
-> [!hint] Flags and options
-> For full help options, you can run `npx quartz build --help`.
+> [!hint] Available commands
+> You can use the following npm scripts:
 >
-> Most of these have sensible defaults but you can override them if you have a custom setup:
+> - `npm run build`: Build the static site
+> - `npm run serve`: Build and serve the site
+> - `npm run dev`: Build and serve with hot-reloading for development
+>
+> For more advanced options, you can run the build command directly:
 >
 > - `-d` or `--directory`: the content folder. This is normally just `content`
 > - `-v` or `--verbose`: print out extra logging information
 > - `-o` or `--output`: the output folder. This is normally just `public`
-> - `--serve`: run a local hot-reloading server to preview your Quartz
+> - `--serve`: run a local hot-reloading server to preview your blog
 > - `--port`: what port to run the local preview server on
 > - `--concurrency`: how many threads to use to parse notes
 

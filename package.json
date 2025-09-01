@@ -1,39 +1,36 @@
 {
-  "name": "@jackyzha0/quartz",
-  "description": "🌱 publish your digital garden and notes as a website",
+  "name": "my-blog",
+  "description": "🌱 My personal blog and digital garden",
   "private": true,
-  "version": "4.5.1",
+  "version": "1.0.0",
   "type": "module",
-  "author": "jackyzha0 <j.zhao2k19@gmail.com>",
+  "author": "minwook <dnrals7929@naver.com>",
   "license": "MIT",
-  "homepage": "https://quartz.jzhao.xyz",
+  "homepage": "https://dnrals7929.github.io",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jackyzha0/quartz.git"
+    "url": "https://github.com/dnrals7929/my-blog.git"
   },
   "scripts": {
-    "quartz": "./quartz/bootstrap-cli.mjs",
-    "docs": "npx quartz build --serve -d docs",
+    "build": "./quartz/bootstrap-cli.mjs build",
+    "serve": "./quartz/bootstrap-cli.mjs build --serve",
+    "dev": "./quartz/bootstrap-cli.mjs build --serve --fastRebuild",
     "check": "tsc --noEmit && npx prettier . --check",
     "format": "npx prettier . --write",
-    "test": "tsx --test",
-    "profile": "0x -D prof ./quartz/bootstrap-cli.mjs build --concurrency=1"
+    "test": "tsx --test"
   },
   "engines": {
     "npm": ">=10.9.2",
     "node": ">=22"
   },
   "keywords": [
-    "site generator",
-    "ssg",
+    "blog",
+    "personal-blog",
     "digital-garden",
     "markdown",
-    "blog",
-    "quartz"
+    "static-site",
+    "knowledge-base"
   ],
-  "bin": {
-    "quartz": "./quartz/bootstrap-cli.mjs"
-  },
   "dependencies": {
     "@clack/prompts": "^0.11.0",
     "@floating-ui/dom": "^1.7.3",

@@ -2,17 +2,13 @@
 title: Setting up your GitHub repository
 ---
 
-First, make sure you have Quartz [[index#🪴 Get Started|cloned and setup locally]].
+First, make sure you have your blog set up locally.
 
 Then, create a new repository on GitHub.com. Do **not** initialize the new repository with `README`, license, or `gitignore` files.
 
-![[github-init-repo-options.png]]
+At the top of your repository on GitHub.com's Quick Setup page, click the clipboard to copy the remote repository URL.
 
-At the top of your repository on GitHub.com's Quick Setup page, click the clipboard to copy the remote repository URL.
-
-![[github-quick-setup.png]]
-
-In your terminal of choice, navigate to the root of your Quartz folder. Then, run the following commands, replacing `REMOTE-URL` with the URL you just copied from the previous step.
+In your terminal of choice, navigate to the root of your blog folder. Then, run the following commands, replacing `REMOTE-URL` with the URL you just copied from the previous step.
 
 ```bash
 # list all the repositories that are tracked
@@ -22,7 +18,7 @@ git remote -v
 git remote set-url origin REMOTE-URL
 
 # if you don't have upstream as a remote, add it so updates work
-git remote add upstream https://github.com/jackyzha0/quartz.git
+git remote add upstream https://github.com/yourusername/your-blog.git
 ```
 
 Then, you can sync the content to upload it to your repository. This is a helper command that will do the initial push of your content to your repository.
