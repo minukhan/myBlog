@@ -50,7 +50,7 @@ title: 한민욱의 기술 블로그
   </tr>
 </table>
 
-<div>
+<div align="center">
   <img src="https://github-readme-stats.vercel.app/api?username=YourGitHubUsername&show_icons=true&theme=radical" alt="GitHub 통계"/>
 </div>
 
