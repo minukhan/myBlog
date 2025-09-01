@@ -1,32 +1,18 @@
-# My Personal Blog
+# Quartz v4
 
-> "The best way to learn is to teach." — Frank Oppenheimer
+> "[One] who works with the door open gets all kinds of interruptions, but [they] also occasionally gets clues as to what the world is and what might be important." — Richard Hamming
 
-Welcome to my personal blog and digital garden! This is where I share my thoughts, learnings, and experiences.
+Quartz is a set of tools that helps you publish your [digital garden](https://jzhao.xyz/posts/networked-thought) and notes as a website for free.
+Quartz v4 features a from-the-ground rewrite focusing on end-user extensibility and ease-of-use.
 
-## About
+🔗 Read the documentation and get started: https://quartz.jzhao.xyz/
 
-This blog is built using a modern static site generator and features:
-- 📝 Markdown-based content
-- 🔍 Full-text search
-- 🌐 Graph view of connections
-- 📱 Mobile-responsive design
-- 🌙 Dark mode support
+[Join the Discord Community](https://discord.gg/cRFFHYye7t)
 
-## Getting Started
+## Sponsors
 
-To run this blog locally:
-
-```bash
-npm install
-npm run dev
-```
-
-## Content
-
-Explore my thoughts on:
-- Technology and programming
-- Learning and personal development
-- Various topics that interest me
-
-Enjoy your visit! 🚀
+<p align="center">
+  <a href="https://github.com/sponsors/jackyzha0">
+    <img src="https://cdn.jsdelivr.net/gh/jackyzha0/jackyzha0/sponsorkit/sponsors.svg" />
+  </a>
+</p>
