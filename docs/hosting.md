@@ -2,15 +2,15 @@
 title: Hosting
 ---
 
-This blog effectively turns your Markdown files and other resources into a bundle of HTML, JS, and CSS files (a website!).
+Quartz effectively turns your Markdown files and other resources into a bundle of HTML, JS, and CSS files (a website!).
 
 However, if you'd like to publish your site to the world, you need a way to host it online. This guide will detail how to deploy with common hosting providers but any service that allows you to deploy static HTML should work as well.
 
 > [!warning]
-> The rest of this guide assumes that you've already created your own GitHub repository for your blog. If you haven't already, [[setting up your GitHub repository|make sure you do so]].
+> The rest of this guide assumes that you've already created your own GitHub repository for Quartz. If you haven't already, [[setting up your GitHub repository|make sure you do so]].
 
 > [!hint]
-> Some blog features (like [[RSS Feed]] and sitemap generation) require `baseUrl` to be configured properly in your [[configuration]] to work properly. Make sure you set this before deploying!
+> Some Quartz features (like [[RSS Feed]] and sitemap generation) require `baseUrl` to be configured properly in your [[configuration]] to work properly. Make sure you set this before deploying!
 
 ## Cloudflare Pages
 
@@ -22,15 +22,15 @@ However, if you'd like to publish your site to the world, you need a way to host
 | ---------------------- | ------------------ |
 | Production branch      | `v4`               |
 | Framework preset       | `None`             |
-| Build command          | `npm run build` |
+| Build command          | `npx quartz build` |
 | Build output directory | `public`           |
 
-Press "Save and deploy" and Cloudflare should have a deployed version of your site in about a minute. Then, every time you sync your blog changes to GitHub, your site should be updated.
+Press "Save and deploy" and Cloudflare should have a deployed version of your site in about a minute. Then, every time you sync your Quartz changes to GitHub, your site should be updated.
 
 To add a custom domain, check out [Cloudflare's documentation](https://developers.cloudflare.com/pages/platform/custom-domains/).
 
 > [!warning]
-> Cloudflare Pages performs a shallow clone by default, so if you rely on `git` for timestamps, it is recommended that you add `git fetch --unshallow &&` to the beginning of the build command (e.g., `git fetch --unshallow && npm run build`).
+> Cloudflare Pages performs a shallow clone by default, so if you rely on `git` for timestamps, it is recommended that you add `git fetch --unshallow &&` to the beginning of the build command (e.g., `git fetch --unshallow && npx quartz build`).
 
 ## GitHub Pages
 
