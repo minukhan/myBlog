@@ -17,7 +17,17 @@ const config: QuartzConfig = {
     },
     locale: "en-US",
     baseUrl: "quartz.jzhao.xyz",
-    ignorePatterns: ["private", "templates", ".obsidian"],
+    ignorePatterns: [
+      "private", 
+      "templates", 
+      ".obsidian",
+      "content/⭐ 오늘의 할일.md",
+      "content/⭐ 주간 할일 모음.md", 
+      "content/2025-03-12.md",
+      "content/각종 마크업 언어 예시들.md",
+      "content/기록.md",
+      "content/자기소개서, 면접 준비.md"
+    ],
     defaultDateType: "modified",
     theme: {
       fontOrigin: "googleFonts",
