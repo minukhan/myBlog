@@ -35,7 +35,51 @@ export const defaultContentPageLayout: PageLayout = {
         { Component: Component.ReaderMode() },
       ],
     }),
-    Component.Explorer(),
+    Component.Explorer({
+      sortFn: (a, b) => {
+        // Custom folder priority order
+        const folderPriority: { [key: string]: number } = {
+          "IT 지식들": 1,
+          "Backend": 2,
+          "트러블슈팅": 3,
+          "DB": 4,
+          "운영체제": 5,
+          "네트워크": 6,
+          "자바": 7
+        }
+        
+        // Both are folders - use priority order
+        if (a.isFolder && b.isFolder) {
+          const aPriority = folderPriority[a.displayName] || 999
+          const bPriority = folderPriority[b.displayName] || 999
+          
+          if (aPriority !== bPriority) {
+            return aPriority - bPriority
+          }
+          
+          // If same priority (or both not in priority list), sort alphabetically
+          return a.displayName.localeCompare(b.displayName, undefined, {
+            numeric: true,
+            sensitivity: "base",
+          })
+        }
+        
+        // Both are files - sort alphabetically
+        if (!a.isFolder && !b.isFolder) {
+          return a.displayName.localeCompare(b.displayName, undefined, {
+            numeric: true,
+            sensitivity: "base",
+          })
+        }
+        
+        // One is folder, one is file - folders first
+        if (a.isFolder && !b.isFolder) {
+          return -1
+        } else {
+          return 1
+        }
+      }
+    }),
   ],
   right: [
     Component.Graph(),
@@ -59,7 +103,51 @@ export const defaultListPageLayout: PageLayout = {
         { Component: Component.Darkmode() },
       ],
     }),
-    Component.Explorer(),
+    Component.Explorer({
+      sortFn: (a, b) => {
+        // Custom folder priority order
+        const folderPriority: { [key: string]: number } = {
+          "IT 지식들": 1,
+          "Backend": 2,
+          "트러블슈팅": 3,
+          "DB": 4,
+          "운영체제": 5,
+          "네트워크": 6,
+          "자바": 7
+        }
+        
+        // Both are folders - use priority order
+        if (a.isFolder && b.isFolder) {
+          const aPriority = folderPriority[a.displayName] || 999
+          const bPriority = folderPriority[b.displayName] || 999
+          
+          if (aPriority !== bPriority) {
+            return aPriority - bPriority
+          }
+          
+          // If same priority (or both not in priority list), sort alphabetically
+          return a.displayName.localeCompare(b.displayName, undefined, {
+            numeric: true,
+            sensitivity: "base",
+          })
+        }
+        
+        // Both are files - sort alphabetically
+        if (!a.isFolder && !b.isFolder) {
+          return a.displayName.localeCompare(b.displayName, undefined, {
+            numeric: true,
+            sensitivity: "base",
+          })
+        }
+        
+        // One is folder, one is file - folders first
+        if (a.isFolder && !b.isFolder) {
+          return -1
+        } else {
+          return 1
+        }
+      }
+    }),
   ],
   right: [],
 }
