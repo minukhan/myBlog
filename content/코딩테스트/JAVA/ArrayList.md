@@ -1,4 +1,6 @@
 
+관련 개념: [[5. 제네릭]], [[List.remove]], [[객체 정렬 방법]], [[PriorityQueue]], [[TreeSet]]
+
 - 동적 배열을 지원
 
 

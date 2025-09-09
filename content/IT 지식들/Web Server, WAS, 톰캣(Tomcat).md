@@ -1,4 +1,6 @@
 
+관련 개념: [[웹서버란]], [[웹의 동작]], [[브라우저]], [[DNS(Domain Name System)]], [[프론트엔드, 백엔드]]
+
 **정의:**  
 - Apache Tomcat은 **자바 서블릿(Servlet)**과 **JSP(JavaServer Pages)**를 실행할 수 있는 **웹 애플리케이션 서버(Web Application Server)** 중 하나입니다.  
 - 쉽게 말해, Java 웹 애플리케이션을 실행하는 데 특화된 서버 프로그램이에요.

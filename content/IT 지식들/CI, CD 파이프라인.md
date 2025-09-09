@@ -1,4 +1,6 @@
 
+관련 개념: [[무중단 배포 (Zero-Downtime Deployment)]], [[Gradle]], [[테스트 격리]], [[도커 (Docker)]], [[쿠버네티스 (Kubernetes, K8s)]]
+
 - 코드를 빠르고 안정적으로 배포하기 위한 자동화된 파이프라인
 - 코드 작성부터, 테스트, 빌드, 배포까지 전 과정을 자동화해서 품질을 높이고 속도를 올림.
 - CI : Continuous Integration

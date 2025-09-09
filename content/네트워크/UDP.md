@@ -21,7 +21,7 @@
 - [[TCP#3-way Handshake|3-way Handshake]]와 같은 사전준비 없이 전송하므로, 연결을 설정하기 위한 어떤 지연도 없다
 - UDP는 연결 상태를 유지하지 않으며, 연결 상태에 대한 그 어떤 파라미터도 기록하지 않는다 -> 좀 더 많은 활성화된 클라이언트를 수용할 수 있다
 #### 패킷 헤드가 작다
-- tCP는 최소 20Bytes의 헤더 오버헤드를 갖지만, UDP는 단지 고정 8Bytes뿐이다
+- TCP는 최소 20Bytes의 헤더 오버헤드를 갖지만, UDP는 단지 고정 8Bytes뿐이다
 ## UDP의 단점
 #### [[TCP#혼잡 제어(Congestion Control)|혼잡 제어(Congestion Control)]]를 하지 않는다
 

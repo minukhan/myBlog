@@ -3,6 +3,8 @@
 
 - java 에서 타입 안전한 방식으로 SQL 혹은 JPQL 을 작성할 수 있도록 도와주는 라이브러리이다.
 
+관련 개념: [[JPA N+1 문제]], [[ORM(Object-Relational Mapping)]], [[JDBC (Java Database Connectivity)]], [[MySQL]], [[PostgreSQL]]
+
 
 ## QueryDSL 사용하는 이유
 
