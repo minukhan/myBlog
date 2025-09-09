@@ -1,3 +1,668 @@
 @use "./base.scss";
+@use "./variables.scss" as *;
 
-// put your custom CSS here!
+// Custom styling for better visual separation and modern design
+
+// Page container adjustments for proper grid layout
+.page {
+  max-width: calc(1000px + 640px) !important; // 1000px + 320px * 2 (sidebars)
+  margin: 0 auto !important;
+  padding: 1rem;
+  box-sizing: border-box;
+  
+  > #quartz-body {
+    padding: 0 !important;
+    gap: 1rem !important;
+    justify-items: stretch !important;
+    align-items: start !important;
+    width: 100% !important;
+    display: grid !important;
+    grid-template-areas: 
+      "grid-sidebar-left grid-header grid-sidebar-right"
+      "grid-sidebar-left grid-center grid-sidebar-right"
+      "grid-sidebar-left grid-footer grid-sidebar-right" !important;
+    grid-template-columns: 320px 1fr 320px !important;
+    grid-template-rows: auto auto auto !important;
+  }
+}
+
+// Base sidebar styling (will be overridden by theme-specific styles)
+.page > #quartz-body .sidebar {
+  border-radius: 12px !important;
+  backdrop-filter: blur(10px);
+  padding: 1.5rem !important;
+  width: 100% !important;
+  box-sizing: border-box;
+  margin: 0 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+  
+  // Add subtle animation
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15) !important;
+  }
+}
+
+// Base component styling (will be overridden by theme-specific styles)
+.page > #quartz-body .sidebar.left {
+  border-left: 6px solid var(--tertiary) !important;
+  border-top: 2px solid var(--tertiary) !important;
+  border-bottom: 2px solid var(--tertiary) !important;
+  
+  .explorer {
+    border-radius: 12px !important;
+    padding: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+    border: 2px solid var(--tertiary) !important;
+    background: linear-gradient(135deg, var(--light) 0%, color-mix(in srgb, var(--light) 95%, var(--tertiary) 5%) 100%) !important;
+  }
+  
+  .explorer-content {
+    border-radius: 8px !important;
+    padding: 1rem !important;
+    margin-top: 0.75rem !important;
+    border: 1px solid color-mix(in srgb, var(--tertiary) 30%, transparent 70%) !important;
+    background: linear-gradient(135deg, var(--light) 0%, color-mix(in srgb, var(--light) 98%, var(--tertiary) 2%) 100%) !important;
+  }
+}
+
+.page > #quartz-body .sidebar.right {
+  border-right: 6px solid var(--secondary) !important;
+  border-top: 2px solid var(--secondary) !important;
+  border-bottom: 2px solid var(--secondary) !important;
+  
+  > * {
+    border-radius: 12px !important;
+    padding: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+    border: 2px solid var(--secondary) !important;
+    background: linear-gradient(135deg, var(--light) 0%, color-mix(in srgb, var(--light) 95%, var(--secondary) 5%) 100%) !important;
+    
+    &:last-child {
+      margin-bottom: 0 !important;
+    }
+  }
+  
+  .toc {
+    border-radius: 8px !important;
+    padding: 1rem !important;
+    border: 1px solid color-mix(in srgb, var(--secondary) 30%, transparent 70%) !important;
+    background: linear-gradient(135deg, var(--light) 0%, color-mix(in srgb, var(--light) 98%, var(--secondary) 2%) 100%) !important;
+  }
+  
+  .backlinks {
+    border-radius: 8px !important;
+    padding: 1rem !important;
+    border: 1px solid color-mix(in srgb, var(--secondary) 30%, transparent 70%) !important;
+    background: linear-gradient(135deg, var(--light) 0%, color-mix(in srgb, var(--light) 98%, var(--secondary) 2%) 100%) !important;
+  }
+}
+
+.page > #quartz-body .center {
+  border-radius: 16px !important;
+  padding: 2.5rem !important;
+  backdrop-filter: blur(10px);
+  width: 100% !important;
+  box-sizing: border-box;
+  margin: 0 !important;
+  border: 3px solid var(--primary) !important;
+  border-top: 4px solid var(--primary) !important;
+  border-bottom: 4px solid var(--primary) !important;
+  
+  article {
+    border-radius: 12px !important;
+    padding: 2.5rem !important;
+    border: 2px solid color-mix(in srgb, var(--primary) 20%, transparent 80%) !important;
+    background: linear-gradient(135deg, var(--light) 0%, color-mix(in srgb, var(--light) 98%, var(--primary) 2%) 100%) !important;
+  }
+}
+
+.page-header,
+.page-footer {
+  border-radius: 16px !important;
+  padding: 2rem 2.5rem !important;
+  backdrop-filter: blur(10px);
+  margin: 0 !important;
+  border: 3px solid var(--primary) !important;
+  border-top: 4px solid var(--primary) !important;
+  border-bottom: 4px solid var(--primary) !important;
+  background: linear-gradient(135deg, var(--light) 0%, color-mix(in srgb, var(--light) 95%, var(--primary) 5%) 100%) !important;
+}
+
+.page-header {
+  margin-bottom: 1.5rem !important;
+}
+
+.page-footer {
+  margin-top: 1.5rem !important;
+}
+
+// Base component styling (will be overridden by theme-specific styles)
+.folder-container {
+  border-radius: 6px;
+  padding: 0.5rem;
+  margin: 0.25rem 0;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    transform: translateX(4px);
+  }
+  
+  div > a {
+    color: var(--secondary);
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.toc-content {
+  border-radius: 6px;
+  padding: 0.5rem;
+  
+  li > a {
+    display: block;
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    
+    &:hover {
+      transform: translateX(4px);
+    }
+    
+    &.in-view {
+      color: var(--secondary);
+      font-weight: 600;
+    }
+  }
+}
+
+.backlinks {
+  h3 {
+    color: var(--secondary);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid color-mix(in srgb, var(--secondary) 30%, transparent 70%);
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    
+    li {
+      border-radius: 6px;
+      padding: 0.5rem;
+      margin: 0.25rem 0;
+      transition: all 0.2s ease;
+      
+      &:hover {
+        transform: translateX(4px);
+      }
+      
+      a {
+        color: var(--dark);
+        text-decoration: none;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+// Tablet responsive adjustments
+@media all and ($tablet) {
+  .page {
+    max-width: calc(700px + 320px) !important; // 700px + 320px (left sidebar)
+    padding: 0.75rem;
+    
+    > #quartz-body {
+      grid-template-areas: 
+        "grid-sidebar-left grid-header"
+        "grid-sidebar-left grid-center"
+        "grid-sidebar-left grid-sidebar-right"
+        "grid-sidebar-left grid-footer" !important;
+      grid-template-columns: 320px 1fr !important;
+      grid-template-rows: auto auto auto auto !important;
+      gap: 0.75rem !important;
+    }
+  }
+}
+
+// Mobile responsive adjustments
+@media all and ($mobile) {
+  .page {
+    max-width: 100% !important;
+    padding: 0.5rem;
+    
+    > #quartz-body {
+      grid-template-areas: 
+        "grid-sidebar-left"
+        "grid-header"
+        "grid-center"
+        "grid-sidebar-right"
+        "grid-footer" !important;
+      grid-template-columns: 1fr !important;
+      grid-template-rows: auto auto auto auto auto !important;
+      gap: 0.5rem !important;
+    }
+  }
+  
+  .page > #quartz-body .sidebar {
+    padding: 1rem !important;
+    border-radius: 8px !important;
+    margin: 0 !important;
+  }
+  
+  .page > #quartz-body .center {
+    padding: 1rem !important;
+    border-radius: 8px !important;
+    margin: 0 !important;
+    
+    article {
+      padding: 1rem !important;
+    }
+  }
+  
+  .page-header,
+  .page-footer {
+    padding: 1rem !important;
+    border-radius: 8px !important;
+    margin: 0 !important;
+  }
+}
+
+// Base component styling (will be overridden by theme-specific styles)
+.search {
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.recent-notes {
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  
+  h3 {
+    color: var(--tertiary);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid color-mix(in srgb, var(--tertiary) 30%, transparent 70%);
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    
+    li {
+      border-radius: 6px;
+      padding: 0.5rem;
+      margin: 0.25rem 0;
+      transition: all 0.2s ease;
+      
+      &:hover {
+        transform: translateX(4px);
+      }
+      
+      a {
+        color: var(--dark);
+        text-decoration: none;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+.graph {
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  
+  h3 {
+    color: var(--secondary);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid color-mix(in srgb, var(--secondary) 30%, transparent 70%);
+  }
+}
+
+.tag-list {
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  
+  h3 {
+    color: var(--tertiary);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid color-mix(in srgb, var(--tertiary) 30%, transparent 70%);
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    
+    li {
+      a {
+        color: var(--secondary);
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        
+        &:hover {
+          background: var(--secondary);
+          color: var(--light);
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+      }
+    }
+  }
+}
+
+.breadcrumbs {
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  
+  a {
+    color: var(--secondary);
+    text-decoration: none;
+    font-weight: 500;
+    
+    &:hover {
+      color: var(--tertiary);
+    }
+  }
+}
+
+.content-meta {
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: var(--darkgray);
+}
+
+// Dark mode specific styling
+[data-theme="dark"] {
+  // Sidebar styling for dark mode
+  .page > #quartz-body .sidebar {
+    background: linear-gradient(135deg, var(--light) 0%, color-mix(in srgb, var(--light) 85%, var(--secondary) 15%) 100%) !important;
+    border: 1px solid color-mix(in srgb, var(--lightgray) 30%, transparent 70%) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+  }
+  
+  .sidebar.left {
+    background: linear-gradient(135deg, var(--light) 0%, color-mix(in srgb, var(--light) 80%, var(--tertiary) 20%) 100%);
+    border-left: 4px solid var(--tertiary);
+    
+    .explorer {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid color-mix(in srgb, var(--tertiary) 30%, transparent 70%);
+    }
+    
+    .explorer-content {
+      background: rgba(255, 255, 255, 0.05);
+    }
+  }
+  
+  .sidebar.right {
+    background: linear-gradient(135deg, var(--light) 0%, color-mix(in srgb, var(--light) 80%, var(--secondary) 20%) 100%);
+    border-right: 4px solid var(--secondary);
+    
+    > * {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid color-mix(in srgb, var(--secondary) 30%, transparent 70%);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .toc {
+      background: rgba(255, 255, 255, 0.05);
+    }
+    
+    .backlinks {
+      background: rgba(255, 255, 255, 0.05);
+    }
+  }
+  
+  // Main content area for dark mode
+  .center {
+    background: var(--light);
+    border: 1px solid color-mix(in srgb, var(--lightgray) 30%, transparent 70%);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    
+    article {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid color-mix(in srgb, var(--lightgray) 20%, transparent 80%);
+    }
+  }
+  
+  // Page header and footer for dark mode
+  .page-header,
+  .page-footer {
+    background: linear-gradient(135deg, var(--light) 0%, color-mix(in srgb, var(--light) 85%, var(--tertiary) 15%) 100%);
+    border: 1px solid color-mix(in srgb, var(--lightgray) 30%, transparent 70%);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  // Component styling for dark mode
+  .search,
+  .recent-notes,
+  .graph,
+  .tag-list,
+  .breadcrumbs,
+  .content-meta {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid color-mix(in srgb, var(--lightgray) 20%, transparent 80%);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  // Explorer folder styling for dark mode
+  .folder-container {
+    background: rgba(255, 255, 255, 0.05);
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+  }
+  
+  // TOC styling for dark mode
+  .toc-content {
+    background: rgba(255, 255, 255, 0.05);
+    
+    li > a {
+      &:hover {
+        background: rgba(255, 255, 255, 0.15);
+      }
+      
+      &.in-view {
+        background: color-mix(in srgb, var(--secondary) 20%, transparent 80%);
+      }
+    }
+  }
+  
+  // Backlinks styling for dark mode
+  .backlinks {
+    ul li {
+      background: rgba(255, 255, 255, 0.05);
+      
+      &:hover {
+        background: rgba(255, 255, 255, 0.15);
+      }
+    }
+  }
+  
+  // Recent notes styling for dark mode
+  .recent-notes {
+    ul li {
+      background: rgba(255, 255, 255, 0.05);
+      
+      &:hover {
+        background: rgba(255, 255, 255, 0.15);
+      }
+    }
+  }
+  
+  // Tag list styling for dark mode
+  .tag-list {
+    ul li a {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: color-mix(in srgb, var(--secondary) 40%, transparent 60%);
+      
+      &:hover {
+        background: var(--secondary);
+        color: var(--light);
+      }
+    }
+  }
+}
+
+// Light mode specific styling (explicit)
+[data-theme="light"] {
+  .sidebar {
+    background: linear-gradient(135deg, var(--light) 0%, color-mix(in srgb, var(--light) 95%, var(--secondary) 5%) 100%);
+    border: 1px solid color-mix(in srgb, var(--lightgray) 60%, transparent 40%);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+  
+  .sidebar.left {
+    background: linear-gradient(135deg, var(--light) 0%, color-mix(in srgb, var(--light) 90%, var(--tertiary) 10%) 100%);
+    border-left: 6px solid var(--tertiary);
+    border-top: 2px solid var(--tertiary);
+    border-bottom: 2px solid var(--tertiary);
+    
+    .explorer {
+      background: linear-gradient(135deg, var(--light) 0%, color-mix(in srgb, var(--light) 95%, var(--tertiary) 5%) 100%);
+      border: 2px solid var(--tertiary);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    .explorer-content {
+      background: linear-gradient(135deg, var(--light) 0%, color-mix(in srgb, var(--light) 98%, var(--tertiary) 2%) 100%);
+      border: 1px solid color-mix(in srgb, var(--tertiary) 30%, transparent 70%);
+    }
+  }
+  
+  .sidebar.right {
+    background: linear-gradient(135deg, var(--light) 0%, color-mix(in srgb, var(--light) 90%, var(--secondary) 10%) 100%);
+    border-right: 6px solid var(--secondary);
+    border-top: 2px solid var(--secondary);
+    border-bottom: 2px solid var(--secondary);
+    
+    > * {
+      background: linear-gradient(135deg, var(--light) 0%, color-mix(in srgb, var(--light) 95%, var(--secondary) 5%) 100%);
+      border: 2px solid var(--secondary);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    .toc {
+      background: linear-gradient(135deg, var(--light) 0%, color-mix(in srgb, var(--light) 98%, var(--secondary) 2%) 100%);
+      border: 1px solid color-mix(in srgb, var(--secondary) 30%, transparent 70%);
+    }
+    
+    .backlinks {
+      background: linear-gradient(135deg, var(--light) 0%, color-mix(in srgb, var(--light) 98%, var(--secondary) 2%) 100%);
+      border: 1px solid color-mix(in srgb, var(--secondary) 30%, transparent 70%);
+    }
+  }
+  
+  .center {
+    background: linear-gradient(135deg, var(--light) 0%, color-mix(in srgb, var(--light) 95%, var(--primary) 5%) 100%);
+    border: 3px solid var(--primary);
+    border-top: 4px solid var(--primary);
+    border-bottom: 4px solid var(--primary);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+    
+    article {
+      background: linear-gradient(135deg, var(--light) 0%, color-mix(in srgb, var(--light) 98%, var(--primary) 2%) 100%);
+      border: 2px solid color-mix(in srgb, var(--primary) 20%, transparent 80%);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+  }
+  
+  .page-header,
+  .page-footer {
+    background: linear-gradient(135deg, var(--light) 0%, color-mix(in srgb, var(--light) 95%, var(--primary) 5%) 100%);
+    border: 3px solid var(--primary);
+    border-top: 4px solid var(--primary);
+    border-bottom: 4px solid var(--primary);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+  }
+  
+  .search,
+  .recent-notes,
+  .graph,
+  .tag-list,
+  .breadcrumbs,
+  .content-meta {
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid color-mix(in srgb, var(--lightgray) 40%, transparent 60%);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .folder-container {
+    background: rgba(255, 255, 255, 0.5);
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.8);
+    }
+  }
+  
+  .toc-content {
+    background: rgba(255, 255, 255, 0.5);
+    
+    li > a {
+      &:hover {
+        background: rgba(255, 255, 255, 0.8);
+      }
+      
+      &.in-view {
+        background: color-mix(in srgb, var(--secondary) 15%, transparent 85%);
+      }
+    }
+  }
+  
+  .backlinks {
+    ul li {
+      background: rgba(255, 255, 255, 0.5);
+      
+      &:hover {
+        background: rgba(255, 255, 255, 0.8);
+      }
+    }
+  }
+  
+  .recent-notes {
+    ul li {
+      background: rgba(255, 255, 255, 0.5);
+      
+      &:hover {
+        background: rgba(255, 255, 255, 0.8);
+      }
+    }
+  }
+  
+  .tag-list {
+    ul li a {
+      background: rgba(255, 255, 255, 0.8);
+      border-color: color-mix(in srgb, var(--secondary) 30%, transparent 70%);
+      
+      &:hover {
+        background: var(--secondary);
+        color: var(--light);
+      }
+    }
+  }
+}
+

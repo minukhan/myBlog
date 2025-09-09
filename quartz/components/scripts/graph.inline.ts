@@ -595,41 +595,73 @@ document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
     document.removeEventListener("themechange", handleThemeChange)
   })
 
-  const containers = [...document.getElementsByClassName("global-graph-outer")] as HTMLElement[]
+  let globalModal: HTMLElement | null = null
+
   async function renderGlobalGraph() {
     const slug = getFullSlug(window)
-    for (const container of containers) {
-      container.classList.add("active")
-      const sidebar = container.closest(".sidebar") as HTMLElement
-      if (sidebar) {
-        sidebar.style.zIndex = "1"
+    
+    // Get local graph config (same as the sidebar local graph)
+    let globalGraphConfig = {
+      drag: true,
+      zoom: true,
+      depth: 1,
+      scale: 1.5,
+      repelForce: 0.5,
+      centerForce: 0.3,
+      linkDistance: 30,
+      fontSize: 0.8,
+      opacityScale: 1,
+      showTags: true,
+      removeTags: [],
+      focusOnHover: false,
+      enableRadial: false,
+    }
+    
+    // Create modal if it doesn't exist
+    if (!globalModal) {
+      globalModal = document.createElement("div")
+      globalModal.className = "global-graph-outer"
+      globalModal.innerHTML = `
+        <div class="global-graph-container" data-cfg='${JSON.stringify(globalGraphConfig)}'>
+          <button class="close-button" aria-label="Close Graph">×</button>
+        </div>
+      `
+      document.body.appendChild(globalModal)
+      
+      // Add event listeners
+      const closeButton = globalModal.querySelector(".close-button")
+      if (closeButton) {
+        closeButton.addEventListener("click", hideGlobalGraph)
       }
-
-      const graphContainer = container.querySelector(".global-graph-container") as HTMLElement
-      registerEscapeHandler(container, hideGlobalGraph)
-      if (graphContainer) {
-        globalGraphCleanups.push(await renderGraph(graphContainer, slug))
-      }
+      
+      // Close when clicking outside
+      globalModal.addEventListener("click", (e) => {
+        if (e.target === globalModal) {
+          hideGlobalGraph()
+        }
+      })
+    }
+    
+    globalModal.classList.add("active")
+    registerEscapeHandler(globalModal, hideGlobalGraph)
+    
+    const graphContainer = globalModal.querySelector(".global-graph-container") as HTMLElement
+    if (graphContainer) {
+      globalGraphCleanups.push(await renderGraph(graphContainer, slug))
     }
   }
 
   function hideGlobalGraph() {
     cleanupGlobalGraphs()
-    for (const container of containers) {
-      container.classList.remove("active")
-      const sidebar = container.closest(".sidebar") as HTMLElement
-      if (sidebar) {
-        sidebar.style.zIndex = ""
-      }
+    if (globalModal) {
+      globalModal.classList.remove("active")
     }
   }
 
   async function shortcutHandler(e: HTMLElementEventMap["keydown"]) {
     if (e.key === "g" && (e.ctrlKey || e.metaKey) && !e.shiftKey) {
       e.preventDefault()
-      const anyGlobalGraphOpen = containers.some((container) =>
-        container.classList.contains("active"),
-      )
+      const anyGlobalGraphOpen = globalModal && globalModal.classList.contains("active")
       anyGlobalGraphOpen ? hideGlobalGraph() : renderGlobalGraph()
     }
   }
@@ -645,5 +677,9 @@ document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
     document.removeEventListener("keydown", shortcutHandler)
     cleanupLocalGraphs()
     cleanupGlobalGraphs()
+    // Clean up modal
+    if (globalModal && globalModal.parentNode) {
+      globalModal.parentNode.removeChild(globalModal)
+    }
   })
 })
