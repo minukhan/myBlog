@@ -40,8 +40,8 @@
 
 ## 대표적인 CSS-in-JS 라이브러리들
 
-- [[Styled Components]]
-- [[Emotion]]
+- [[Frontend/Styled Components]]
+- [[Frontend/Emotion]]
 - Stitches
 - Linaria
 - JSS
