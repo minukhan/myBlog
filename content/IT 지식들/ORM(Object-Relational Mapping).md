@@ -12,12 +12,12 @@
 
 ### 대표적인 ORM 프레임워크 예시
 
-| 언어        | 대표 ORM 프레임워크                                            |
-| --------- | ------------------------------------------------------- |
-| Java      | Hibernate, JPA (Java Persistence API), MyBatis (부분 ORM) |
-| Python    | SQLAlchemy, Django ORM                                  |
-| C# (.NET) | Entity Framework                                        |
-| Ruby      | ActiveRecord                                            |
+| 언어        | 대표 ORM 프레임워크                                                |
+| --------- | ----------------------------------------------------------- |
+| Java      | [[Hibernate]], JPA (Java Persistence API), MyBatis (부분 ORM) |
+| Python    | SQLAlchemy, Django ORM                                      |
+| C# (.NET) | Entity Framework                                            |
+| Ruby      | ActiveRecord                                                |
 ## ORM의 주요 기능
 
 - **객체와 테이블 매핑**: 클래스는 테이블, 필드는 컬럼에 대응

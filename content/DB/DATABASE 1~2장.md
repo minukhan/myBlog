@@ -217,7 +217,7 @@
 
 - **ORM (Object-Relational Mapping)**
     - 객체지향 프로그래밍과 관계형 DB를 연결하는 기술
-    - **예제: JPA, Hibernate, MyBatis**
+    - **예제: JPA, [[Hibernate]], MyBatis**
     - **장점**  
          객체 모델을 사용해 코드 가독성이 높아짐  
          SQL 문을 직접 작성하지 않아도 됨 (자동 SQL 생성)  
