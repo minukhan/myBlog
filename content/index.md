@@ -51,8 +51,9 @@ title: 한민욱의 기술 블로그
 </table>
 
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=YourGitHubUsername&show_icons=true&theme=radical" alt="GitHub 통계"/>
+  <img src="https://github-readme-stats.vercel.app/api?username=minukhan&show_icons=true&theme=radical" alt="GitHub 통계"/>
 </div>
+
 
 ### 🥇 Baekjoon / solved.ac
 <div align="center">
