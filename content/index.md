@@ -54,5 +54,11 @@ title: 한민욱의 기술 블로그
   <img src="https://github-readme-stats.vercel.app/api?username=YourGitHubUsername&show_icons=true&theme=radical" alt="GitHub 통계"/>
 </div>
 
+### 🥇 Baekjoon / solved.ac
+<div align="center">
+  <a href="https://solved.ac/profile/dnrals1000">
+    <img src="https://mazassumnida.wtf/api/v2/generate_badge?boj=dnrals1000" alt="Solved.ac Profile: dnrals1000" />
+  </a>
+</div>
 
 
